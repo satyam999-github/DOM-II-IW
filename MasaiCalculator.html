@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    *{
+        background-color: white;
+    }
+    h1{
+        margin-top: 5%;
+        color: teal;
+        text-align: center;
+        font-size: 50px;
+    }
+    #parent{
+        width: 29%;
+        margin: auto;
+        margin-top: 5%;
+        padding-bottom: 60px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #parent>div:nth-child(1)>button{
+        width: 85%;
+        height: 60px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    }
+    #parent>div:nth-child(1){
+        margin-left: 50px;
+    }
+    #parent>div:nth-child(2){
+        display: grid;
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        gap: 10px;
+        margin-left: 50px;
+    }
+    #parent>div:nth-child(2)>button{
+        border-radius: 10px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: white;
+        font-family:'Times New Roman', Times, serif;
+        font-size: 22px;
+        font-weight:900;
+    }
+   
+</style>
+<body>
+    <h1>Masai Calculator</h1>
+    <div id="parent">
+        <div >
+            <button id="display"></button>
+        </div>
+        <div id="allbtn">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button style="background-color: black; color: white;">+</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button style="background-color: black; color: white;">-</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button style="background-color: black; color: white;">x</button>
+            <button style="background-color: red; color: white;">C</button>
+            <button>0</button>
+            <button style="background-color: black; color: white;">=</button>
+            <button style="background-color: black; color: white;">/</button>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+
+    let display= document.getElementById("display");
+    let allbtn= document.querySelectorAll("#allbtn > button");
+    
+    for(let i=0; i < allbtn.length; i++){
+        allbtn[i].addEventListener("click",function(){
+            display.style.fontSize = "30px";
+            
+            let firstnum= "";
+            if(allbtn[i].innerText=== "0" || allbtn[i].innerText=== "1" || allbtn[i].innerText=== "2" || allbtn[i].innerText=== "3" || allbtn[i].innerText=== "4" || allbtn[i].innerText=== "5" || allbtn[i].innerText=== "6" || allbtn[i].innerText=== "7" || allbtn[i].innerText=== "8" || allbtn[i].innerText=== "9"){
+                firstnum+= allbtn[i].innerText;
+                display.innerText= firstnum
+            }
+        })
+        
+    }
+
+</script>
