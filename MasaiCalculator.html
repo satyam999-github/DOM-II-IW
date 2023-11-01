@@ -72,9 +72,9 @@
             <button>8</button>
             <button>9</button>
             <button style="background-color: black; color: white;">x</button>
-            <button style="background-color: red; color: white;">C</button>
+            <button onclick="clear()" style="background-color: red; color: white;">C</button>
             <button>0</button>
-            <button style="background-color: black; color: white;">=</button>
+            <button style="background-color: black; color: white;" onclick="equal()">=</button>
             <button style="background-color: black; color: white;">/</button>
         </div>
     </div>
@@ -84,19 +84,45 @@
 <script>
 
     let display= document.getElementById("display");
+    display.style.fontSize = "30px";
+
     let allbtn= document.querySelectorAll("#allbtn > button");
-    
+
+
+    let num= "";
+    let bag= "";
+    let operator= "";
+
     for(let i=0; i < allbtn.length; i++){
         allbtn[i].addEventListener("click",function(){
-            display.style.fontSize = "30px";
             
-            let firstnum= "";
             if(allbtn[i].innerText=== "0" || allbtn[i].innerText=== "1" || allbtn[i].innerText=== "2" || allbtn[i].innerText=== "3" || allbtn[i].innerText=== "4" || allbtn[i].innerText=== "5" || allbtn[i].innerText=== "6" || allbtn[i].innerText=== "7" || allbtn[i].innerText=== "8" || allbtn[i].innerText=== "9"){
-                firstnum+= allbtn[i].innerText;
-                display.innerText= firstnum
+                num+= allbtn[i].innerText;
+                display.innerText= num;
+            }else if(allbtn[i].innerText=== "+" || allbtn[i].innerText=== "-" || allbtn[i].innerText=== "x" || allbtn[i].innerText=== "/"){
+                bag= num;
+                operator+= allbtn[i].innerText ;
+                display.innerText= operator;
+                num="";
+            }else if(allbtn[i].innerText=== "C"){
+                display.innerText= "0";
+                num= "";
+                bag= "";
+                operator= "";
             }
         })
-        
     }
+    function equal(){
+        if(operator=== "+"){
+            display.innerText=((+bag) + (+num));
+        }else if(operator === "-"){
+            display.innerText= Math.abs((+bag) - (+num));
+        }else if(operator === "x"){
+            display.innerText= ((+bag) * (+num));
+        }else if(operator === "/"){
+            display.innerText= ((+bag) / (+num));
+        }
+    }
+
 
 </script>
